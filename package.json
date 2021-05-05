@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/RinceLagger/ipog_backend/issues"
   },
-  "homepage": "https://github.com/RinceLagger/ipog_backend#readme"
+  "homepage": "https://github.com/RinceLagger/ipog_backend#readme",
+  "dependencies": {
+    "java-caller": "^2.2.4"
+  }
 }
