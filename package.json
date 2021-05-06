@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/RinceLagger/ipog_backend#readme",
   "dependencies": {
+    "dotenv": "^9.0.0",
     "java-caller": "^2.2.4"
   }
 }
