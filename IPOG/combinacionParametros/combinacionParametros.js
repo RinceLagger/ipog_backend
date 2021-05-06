@@ -56,7 +56,8 @@ function combinacionParametros(m, n) {
       combinaciones.push(combinacion);
     } else {
       fin = true;
-      console.log(combinaciones);
+      //console.log(combinaciones);
+      return combinaciones;
     }
   }
 }
