@@ -25,7 +25,7 @@ function ipog(dimensiones, t) {
         let parametros = dimensiones.map(value =>Object.keys(value)[0] ); // [ 'P1', 'P3', 'P2' ]
         let combParam = [];
         
-        for (i = 0; i < numParam; i++) { //[ 1, 1, 0 ]
+        for (let i = 0; i < numParam; i++) { //[ 1, 1, 0 ]
             //generamos primera combinacion
             if (i < t) {
                 combParam.push(1);
@@ -36,11 +36,40 @@ function ipog(dimensiones, t) {
 
           //console.log(dimensiones, combParam)
           let juegoPruebas = combinacionValores(dimensiones,combParam);
+        // [[ 0, 0 ], [ 0, 1 ],[ 0, 2 ], [ 1, 0 ],[ 1, 1 ], [ 1, 2 ],[ 2, 0 ], [ 2, 1 ],[ 2, 2 ]]
+        if(numParam >t){
+            for(let i=t;i<numParam;i++){
+                //pi
+                
+                let combParam = combinacionParametros(i+1,t); // inicial [ [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ]
+                
+                let combSoloI = combParam.filter((value, index)=> value[i]===1);// [ [ 0, 1, 1 ], [ 1, 0, 1 ] ]
+                //console.log(combSoloI)
+                combParam = [...combSoloI];
+                let pi =[];
+
+                
+
+                combParam.forEach((value)=> {
+                    
+                    pi.push(combinacionValores(dimensiones.slice(0,i+1), value))});
+
+                
 
 
-        console.log(juegoPruebas)
 
 
+
+
+
+
+
+            }
+            
+
+        }
+        
+        //console.log(juegoPruebas)
     }
 
 
@@ -58,7 +87,9 @@ function compareParamValues(a, b) {
     return 0;
   }
 
-  ipog([{ P1: 3 }, { P2: 2 },{P3:3}], 2);
+  ipog([ { P1: 3 }, { P3: 3 }, { P2: 2 } ], 2);
+
+  //ipog([{ P1: 2 }, { P2: 3 },{P3:2}, { P4: 3 },{P5:2}], 2);
 
 module.exports = ipog;
 

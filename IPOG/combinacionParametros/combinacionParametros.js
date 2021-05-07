@@ -6,9 +6,9 @@ function combinacionParametros(m, n) {
   if ((m <= 0) | (n <= 0) | (n > m)) {
     console.log("m, n > 0 y m >= n");
   } else {
-    for (i = 0; i < m; i++) {
+    for (let i = 0; i < m; i++) {
       //generamos primera combinacion
-      if (i < n - 1) {
+      if (i < m - n ) {
         combinacion.push(0);
       } else {
         combinacion.push(1);
@@ -36,7 +36,7 @@ function combinacionParametros(m, n) {
       combinacion[g + 1] = 0;
     } else {
       let r = 0;
-      for (i = 0; i <= g; i++) {
+      for (let i = 0; i <= g; i++) {
         r += combinacion[i];
       }
 
@@ -47,7 +47,7 @@ function combinacionParametros(m, n) {
         combinacion[i] = 0;
       }
       if (ultimosUnos > 0) {
-        for (i = m - ultimosUnos; i < m; i++) {
+        for (let i = m - ultimosUnos; i < m; i++) {
           combinacion[i] = 1;
         }
       }
@@ -62,6 +62,6 @@ function combinacionParametros(m, n) {
   }
 }
 
-combinacionParametros(5, 3);
+//combinacionParametros(5, 2);
 
 module.exports = combinacionParametros;
