@@ -1,5 +1,6 @@
 const combinacionParametros = require("./combinacionParametros/combinacionParametros");
-const combinacionValores = require("./combinacionValores/combinacionValores")
+const combinacionValores = require("./combinacionValores/combinacionValores");
+const combinacionesCubiertas = require("./combinacionesCubiertas/combinacionesCubiertas");
 
 
 //datos entrada= [[{ P1: 3 }, { P2: 2 },{P3:3}],{t:2}]
@@ -54,7 +55,23 @@ function ipog(dimensiones, t) {
                     
                     pi.push(combinacionValores(dimensiones.slice(0,i+1), value))});
 
-                
+                for(let j=0; j<juegoPruebas.length;j++){//recorremos las filas del juego de pruebas 
+                    let caso = juegoPruebas[j];
+
+                    let combCubiertasPi = [] // tantos 0 como dimensiones del parámetro. Vector que indicará cuantos de Pi cubre añadiendo el 0, el 1 y el 2 (si la dimensión fuese x ej 3)
+
+                    for (let k = 0; k <= i; k++) { //inicialmente tendríamos [0,0,0]
+                        combCubiertasPi.push(0);
+                      }
+                    for(let k = 0; k <= i; k++) { //probamos las combinaciones cubiertas con los distintos valores según la dimensión
+                        let pruebaCaso = [...caso, k];
+                        combCubiertasPi[k] = combinacionesCubiertas(combParam, pi, pruebaCaso );
+                        //console.log(combCubiertasPi);
+                    } 
+
+
+                    
+                }
 
 
 
@@ -87,9 +104,9 @@ function compareParamValues(a, b) {
     return 0;
   }
 
-  ipog([ { P1: 3 }, { P3: 3 }, { P2: 2 } ], 2);
+  //ipog([ { P1: 3 }, { P3: 3 }, { P2: 2 } ], 2);
 
-  //ipog([{ P1: 2 }, { P2: 3 },{P3:2}, { P4: 3 },{P5:2}], 2);
+  ipog([{ P1: 2 }, { P2: 3 },{P3:2}, { P4: 3 },{P5:2}], 2);
 
 module.exports = ipog;
 
