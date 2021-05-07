@@ -1,7 +1,7 @@
-//datos entrada= [[{"P1":2},{"P2":3}...],{t:2}]
-//dimensiones = [{"P1":2},{"P2":3}...]
+//datos entrada= [[{ P1: 3 }, { P2: 2 },{P3:3}],{t:2}]
+//dimensiones = [{ P1: 3 }, { P2: 2 },{P3:3}]
 //t = {t:2}
-//combParam = [0,0,0,1,1]
+//combParam = [0, 1, 1]
 
 function combinacionValores(dimensiones, combParam) {
   if (
@@ -11,7 +11,7 @@ function combinacionValores(dimensiones, combParam) {
   ) {
     console.log("error datos entrada");
   } else if (
-    dimensiones.filter((value, index) => value[`P${index + 1}`] < 2).length > 0
+    dimensiones.filter((value) => Object.values(value)[0] < 2).length > 0
   ) {
     console.log(
       "el dominio de todos los parámetros debe ser 2 valores como mínimo"
@@ -19,18 +19,18 @@ function combinacionValores(dimensiones, combParam) {
   } else if (combParam.reduce((acc, curr) => acc + curr) < 1) {
     console.log("la combinación debe tener, al menos, un parámetro activado");
   } else {
-    let indices = combParam.map((value) => (value === 1 ? true : false));
-    n = indices.reduce((acc, curr) => {
+    let indices = combParam.map((value) => (value === 1 ? true : false));//[false, true,true]
+    n = indices.reduce((acc, curr) => { // 2
       if (curr) return acc + 1;
       else return acc;
     });
     let combinacion = [];
     let combinaciones = [];
-    for (i = 0; i < n; i++) combinacion.push(0);
+    for (i = 0; i < n; i++) combinacion.push(0); //[0,0] combinacion inicial
     let maxCombinacion = [];
 
     dimensiones.forEach((value, index) => {
-      if (indices[index]) maxCombinacion.push(value[`P${index + 1}`] - 1);
+      if (indices[index]) maxCombinacion.push(Object.values(value)[0] - 1); // [1,2] Max comb
     });
     combinaciones.push(combinacion)
     
@@ -46,12 +46,12 @@ function combinacionValores(dimensiones, combParam) {
         combinaciones.push(combinacion);
 
     }
-    console.log(combinaciones);
+    //console.log(combinaciones);
     return combinaciones;
   }
   
 }
 
-//combinacionValores([{ P1: 3 }, { P2: 2 },{P3:3}], [0, 1, 1]);
+//combinacionValores([{ P1: 3 }, { P2: 2 },{P3:3}], [1, 1, 0]);
 
 module.exports = combinacionValores;
