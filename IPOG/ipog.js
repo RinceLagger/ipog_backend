@@ -69,7 +69,11 @@ function ipog(dimensiones, t) {
                         //console.log(combCubiertasPi);
                     } 
 
+                    let maximo = combCubiertasPi.indexOf(Math.max(...combCubiertasPi));
 
+                    juegoPruebas[j] = [...caso,maximo];
+
+                    console.log(juegoPruebas);
                     
                 }
 
