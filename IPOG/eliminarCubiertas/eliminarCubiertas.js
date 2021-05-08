@@ -1,6 +1,4 @@
 function eliminarCubiertas(combParam, pi, caso) {
-  
-
   for (let i = 0; i < combParam.length; i++) {
     let combParamPrueba = combParam[i]; //  [ 0, 1, 1 ]
     let combValores = pi[i]; // [[ 0, 0 ], [ 0, 1 ], [ 1, 0 ],[ 1, 1 ], [ 2, 0 ], [ 2, 1 ]]
