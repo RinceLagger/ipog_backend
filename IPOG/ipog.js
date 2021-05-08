@@ -1,7 +1,7 @@
 const combinacionParametros = require("./combinacionParametros/combinacionParametros");
 const combinacionValores = require("./combinacionValores/combinacionValores");
 const combinacionesCubiertas = require("./combinacionesCubiertas/combinacionesCubiertas");
-
+const eliminarCubiertas = require("./eliminarCubiertas/eliminarCubiertas");
 
 //datos entrada= [[{ P1: 3 }, { P2: 2 },{P3:3}],{t:2}]
 //dimensiones = [{ P1: 3 }, { P2: 2 },{P3:3}]
@@ -51,10 +51,10 @@ function ipog(dimensiones, t) {
 
                 
 
-                combParam.forEach((value)=> {
-                    
-                    pi.push(combinacionValores(dimensiones.slice(0,i+1), value))});
-
+                combParam.forEach((value)=> {pi.push(combinacionValores(dimensiones.slice(0,i+1), value))});
+                
+                /*****EXTENSIÓN HORIZONTAL  ****/
+                
                 for(let j=0; j<juegoPruebas.length;j++){//recorremos las filas del juego de pruebas 
                     let caso = juegoPruebas[j];
 
@@ -71,10 +71,11 @@ function ipog(dimensiones, t) {
 
                     let maximo = combCubiertasPi.indexOf(Math.max(...combCubiertasPi));
 
-                    juegoPruebas[j] = [...caso,maximo];
+                    caso = [...caso,maximo];
+                    juegoPruebas[j] = caso;
 
-                    console.log(juegoPruebas);
                     
+                    pi = eliminarCubiertas(combParam, pi, caso );
                 }
 
 
@@ -90,7 +91,7 @@ function ipog(dimensiones, t) {
 
         }
         
-        //console.log(juegoPruebas)
+        console.log(juegoPruebas)
     }
 
 
