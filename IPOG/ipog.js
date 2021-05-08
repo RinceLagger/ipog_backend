@@ -138,7 +138,7 @@ function ipog(dimensiones, t) {
                 combParamPrueba.forEach((value, index) => {
                   //sustituimos los -1 por lo que necesitamos
                   if (value === 1) {
-                    nuevoCaso[m] = valor[m];
+                    nuevoCaso[index] = valor[m];
                     m = m + 1;
                   }
                 });
@@ -150,7 +150,7 @@ function ipog(dimensiones, t) {
       }
     }
     let resultado = [dimensiones, juegoPruebas];
-
+    //console.log(resultado);
     return resultado;
   }
 }
