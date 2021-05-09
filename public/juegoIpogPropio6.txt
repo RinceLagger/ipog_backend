@@ -1,9 +1,0 @@
-[Parameter]
-P1 (int) : 0 ,1 ,2 ,3  
-
-[Test Set]
-P1 
-0
-1
-2
-3

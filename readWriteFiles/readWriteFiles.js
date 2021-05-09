@@ -1,10 +1,14 @@
 let fs = require("fs");
+const checkTime = 1000; //esperamos 1 segundo a que se genere el archivo por parte de ACTS antes de leerlo
 
 function readFile(fileName) {
-  return fs.promises.readFile(__dirname + `/../public/${fileName}`, "utf8");
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      file = fs.promises.readFile(__dirname + `/../public/${fileName}`, "utf8");
+      resolve(file);
+    }, 2000);
+  });
 }
-
-//readFile("ejemplo.csv");
 
 function writeFile(fileName, input) {
   let logger = fs.createWriteStream(__dirname + `/../public/${fileName}`, {
@@ -13,11 +17,6 @@ function writeFile(fileName, input) {
 
   input.forEach((line) => logger.write(line + "\n"));
 }
-
-// input = readFile("juego_pruebas_propio.txt")
-//   .then((res) => res.split("\r\n")).then(res=> {console.log(res)
-//     writeFile("pruebaEscritura",res);})
-//   .catch((err) => console.log(err));
 
 function writeACTSfile(fileName, dimensiones, juegoPruebas) {
   let logger = fs.createWriteStream(__dirname + `/../public/${fileName}`, {
@@ -40,15 +39,10 @@ function writeACTSfile(fileName, dimensiones, juegoPruebas) {
       logger.write(`${Object.keys(dimensiones[i])[0]} ,`);
     }
   }
-  juegoPruebas.forEach((linea)=>{
-    logger.write(linea.toString()+"\n");
-
-  })
-  
-
+  juegoPruebas.forEach((linea) => {
+    logger.write(linea.toString() + "\n");
+  });
 }
-
-
 
 function formatoACTSdimension(dimension) {
   let paramName = Object.keys(dimension)[0];
@@ -70,3 +64,4 @@ function formatoACTSdimension(dimension) {
 
 //exports.formatoACTSdimension = formatoACTSdimension;
 exports.writeACTSfile = writeACTSfile;
+exports.readFile = readFile;

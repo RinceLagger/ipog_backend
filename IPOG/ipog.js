@@ -151,7 +151,7 @@ function ipog(juegoPruebasName,dimensiones, t) {
       }
     }
     let resultado = [dimensiones, juegoPruebas];
-    console.log(resultado);
+    //console.log(resultado);
     readWriteFiles.writeACTSfile(`${juegoPruebasName}`,dimensiones,juegoPruebas);
     return resultado;
   }
