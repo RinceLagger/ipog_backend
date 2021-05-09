@@ -9,7 +9,7 @@ const readWriteFiles = require("../readWriteFiles/readWriteFiles");
 //t = {t:2}
 //combParam = [0, 1, 1]
 
-function ipog(dimensiones, t) {
+function ipog(juegoPruebasName,dimensiones, t) {
   let numParam = dimensiones.length;
 
   if (numParam < 1) {
@@ -152,7 +152,7 @@ function ipog(dimensiones, t) {
     }
     let resultado = [dimensiones, juegoPruebas];
     console.log(resultado);
-    readWriteFiles.writeACTSfile("juegoACTS.txt",dimensiones,juegoPruebas);
+    readWriteFiles.writeACTSfile(`${juegoPruebasName}`,dimensiones,juegoPruebas);
     return resultado;
   }
 }
@@ -170,6 +170,6 @@ function compareParamValues(a, b) {
 
 //ipog([ { P1: 3 }, { P3: 3 }, { P2: 2 } ], 2);
 
-ipog([{ P1: 2 }, { P2: 3 }, { P3: 2 }, { P4: 3 }, { P5: 2 }], 2);
+//ipog("juegoACTS.txt",[{ P1: 2 }, { P2: 3 }, { P3: 2 }, { P4: 3 }, { P5: 2 }], 2);
 
 module.exports = ipog;
