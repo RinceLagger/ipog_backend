@@ -111,7 +111,7 @@ function ipog(dimensiones, t) {
 
                 if (
                   seleccionCaso.every(
-                    (value, index) => (value === valor[index]) | (value === -1)
+                    (value, index) => (value === valor[index]) | (value === "*")
                   )
                 ) {
                   encontrado = true;
@@ -133,7 +133,7 @@ function ipog(dimensiones, t) {
                 let nuevoCaso = [];
                 for (let l = 0; l <= i; l++) {
                   //[-1,-1,-1,...]
-                  nuevoCaso.push(-1);
+                  nuevoCaso.push("*");
                 }
                 let m = 0;
                 combParamPrueba.forEach((value, index) => {
@@ -152,7 +152,7 @@ function ipog(dimensiones, t) {
     }
     let resultado = [dimensiones, juegoPruebas];
     console.log(resultado);
-    readWriteFiles.writeACTSfile("juegoACTS",dimensiones,juegoPruebas);
+    readWriteFiles.writeACTSfile("juegoACTS.txt",dimensiones,juegoPruebas);
     return resultado;
   }
 }

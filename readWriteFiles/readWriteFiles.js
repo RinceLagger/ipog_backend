@@ -29,6 +29,20 @@ function writeACTSfile(fileName, dimensiones, juegoPruebas) {
   dimensiones.forEach((dim) => {
     logger.write(formatoACTSdimension(dim));
   });
+
+  logger.write("\n");
+  logger.write("[Test Set]\n");
+
+  for (let i = 0; i < dimensiones.length; i++) {
+    if (i === dimensiones.length - 1) {
+      logger.write(`${Object.keys(dimensiones[i])[0]} `);
+    } else {
+      logger.write(`${Object.keys(dimensiones[i])[0]} ,`);
+    }
+  }
+  
+  
+
 }
 
 
