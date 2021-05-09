@@ -35,12 +35,15 @@ function writeACTSfile(fileName, dimensiones, juegoPruebas) {
 
   for (let i = 0; i < dimensiones.length; i++) {
     if (i === dimensiones.length - 1) {
-      logger.write(`${Object.keys(dimensiones[i])[0]} `);
+      logger.write(`${Object.keys(dimensiones[i])[0]} \n`);
     } else {
       logger.write(`${Object.keys(dimensiones[i])[0]} ,`);
     }
   }
-  
+  juegoPruebas.forEach((linea)=>{
+    logger.write(linea.toString()+"\n");
+
+  })
   
 
 }
