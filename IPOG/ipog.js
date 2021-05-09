@@ -2,6 +2,7 @@ const combinacionParametros = require("./combinacionParametros/combinacionParame
 const combinacionValores = require("./combinacionValores/combinacionValores");
 const combinacionesCubiertas = require("./combinacionesCubiertas/combinacionesCubiertas");
 const eliminarCubiertas = require("./eliminarCubiertas/eliminarCubiertas");
+const readWriteFiles = require("../readWriteFiles/readWriteFiles");
 
 //datos entrada= [[{ P1: 3 }, { P2: 2 },{P3:3}],{t:2}]
 //dimensiones = [{ P1: 3 }, { P2: 2 },{P3:3}]
@@ -150,7 +151,8 @@ function ipog(dimensiones, t) {
       }
     }
     let resultado = [dimensiones, juegoPruebas];
-    //console.log(resultado);
+    console.log(resultado);
+    readWriteFiles.writeACTSfile("juegoACTS",dimensiones,juegoPruebas);
     return resultado;
   }
 }
