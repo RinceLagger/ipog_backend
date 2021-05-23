@@ -65,11 +65,11 @@ function ipog(juegoPruebasName,dimensiones, t) {
 
           let combCubiertasPi = []; // tantos 0 como dimensiones del parámetro. Vector que indicará cuantos de Pi cubre añadiendo el 0, el 1 y el 2 (si la dimensión fuese x ej 3)
 
-          for (let k = 0; k <= i; k++) {
+          for (let k = 0; k <= Object.values(dimensiones[i])[0]; k++) {
             //inicialmente tendríamos [0,0,0]
             combCubiertasPi.push(0);
           }
-          for (let k = 0; k <= i; k++) {
+          for (let k = 0; k <= Object.values(dimensiones[i])[0]; k++) {
             //probamos las combinaciones cubiertas con los distintos valores según la dimensión
             let pruebaCaso = [...caso, k];
             combCubiertasPi[k] = combinacionesCubiertas(
