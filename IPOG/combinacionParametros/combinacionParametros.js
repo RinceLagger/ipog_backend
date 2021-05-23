@@ -4,7 +4,7 @@ function combinacionParametros(m, n) {
   let fin = false;
   let encontrado = false;
   if ((m <= 0) | (n <= 0) | (n > m)) {
-    console.log("m, n > 0 y m >= n");
+    throw new Error("error:m, n > 0 y m >= n");
   } else {
     for (let i = 0; i < m; i++) {
       //generamos primera combinacion
