@@ -4,10 +4,11 @@ const combinacionesCubiertas = require("./combinacionesCubiertas/combinacionesCu
 const eliminarCubiertas = require("./eliminarCubiertas/eliminarCubiertas");
 const readWriteFiles = require("../readWriteFiles/readWriteFiles");
 
-//datos entrada= [[{ P1: 3 }, { P2: 2 },{P3:3}],{t:2}]
-//dimensiones = [{ P1: 3 }, { P2: 2 },{P3:3}]
-//t = {t:2}
-//combParam = [0, 1, 1]
+/***Formato de datos**************** 
+datos entrada= [[{ P1: 3 }, { P2: 2 },{P3:3}],{t:2}]
+dimensiones = [{ P1: 3 }, { P2: 2 },{P3:3}]
+t = 2
+******************************/
 
 function ipog(juegoPruebasName,dimensiones, t) {
   let numParam = dimensiones.length;
@@ -39,7 +40,6 @@ function ipog(juegoPruebasName,dimensiones, t) {
       }
     }
 
-    //console.log(dimensiones, combParam)
     let juegoPruebas = combinacionValores(dimensiones, combParam);
     // [[ 0, 0 ], [ 0, 1 ],[ 0, 2 ], [ 1, 0 ],[ 1, 1 ], [ 1, 2 ],[ 2, 0 ], [ 2, 1 ],[ 2, 2 ]]
     if (numParam > t) {
@@ -49,7 +49,6 @@ function ipog(juegoPruebasName,dimensiones, t) {
         let combParam = combinacionParametros(i + 1, t); // inicial [ [ 0, 1, 1 ], [ 1, 0, 1 ], [ 1, 1, 0 ] ]
 
         let combSoloI = combParam.filter((value, index) => value[i] === 1); // [ [ 0, 1, 1 ], [ 1, 0, 1 ] ]
-        //console.log(combSoloI)
         combParam = [...combSoloI];
         let pi = [];
 
@@ -77,7 +76,7 @@ function ipog(juegoPruebasName,dimensiones, t) {
               pi,
               pruebaCaso
             );
-            //console.log(combCubiertasPi);
+            
           }
 
           let maximo = combCubiertasPi.indexOf(Math.max(...combCubiertasPi));
