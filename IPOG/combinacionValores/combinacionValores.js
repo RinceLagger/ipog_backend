@@ -9,15 +9,15 @@ function combinacionValores(dimensiones, combParam) {
     (combParam.length <= 0) |
     (dimensiones.length != combParam.length)
   ) {
-    console.log("error datos entrada");
+    throw new Error("error datos entrada");
+    
   } else if (
     dimensiones.filter((value) => Object.values(value)[0] < 2).length > 0
   ) {
-    console.log(
-      "el dominio de todos los parámetros debe ser 2 valores como mínimo"
-    );
+    throw new Error("el dominio de todos los parámetros debe ser 2 valores como mínimo");
+    
   } else if (combParam.reduce((acc, curr) => acc + curr) < 1) {
-    console.log("la combinación debe tener, al menos, un parámetro activado");
+    throw new Error("la combinación debe tener, al menos, un parámetro activado");
   } else {
     let indices = combParam.map((value) => (value === 1 ? true : false));//[false, true,true]
     n = indices.reduce((acc, curr) => { // 2
